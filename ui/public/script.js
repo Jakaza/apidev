@@ -1,8 +1,19 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
+
+  const responseBox = document.getElementById("response-box");
+  const responseSection = document.getElementById("response-section");
+  const toggleBtn = document.getElementById("toggle-response-btn");
+
+  toggleBtn.onclick = () => {
+    const isHidden = responseBox.classList.toggle("hidden");
+    toggleBtn.textContent = isHidden ? "▶ Show Response" : "▼ Hide Response";
+  };
+
+
   const routesContainer = document.getElementById("routes-container");
   const testFormContainer = document.getElementById("test-form-container");
   const testForm = document.getElementById("test-form");
-  const responseBox = document.getElementById("response-box");
 
   const methodInput = document.getElementById("http-method");
   const routeUrlInput = document.getElementById("route-url");
@@ -118,7 +129,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       const resultText = await res.text();
-      responseBox.textContent = `Status: ${res.status}\n\n${resultText}`;
+
+      let formatted = resultText;
+      try {
+        const json = JSON.parse(resultText);
+        formatted = JSON.stringify(json, null, 2);
+      } catch (e) {
+        // Not JSON, fallback to plain text
+      }
+
+      responseBox.textContent = `Status: ${res.status}\n\n${formatted}`;
+      responseBox.classList.remove("hidden");
+      responseSection.classList.remove("hidden");
+      toggleBtn.textContent = "▼ Hide Response";
+
     } catch (err) {
       responseBox.textContent = `❌ Request failed:\n${err.message}`;
     }
