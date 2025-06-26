@@ -1,0 +1,26 @@
+{
+  "name": "api-dev",
+  "version": "0.1.0",
+  "main": "index.js",
+  "description": "API testing tool that auto-detect ExpressJS routes and allow developers to test the api easy",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "tester",
+    "devtools",
+    "middleware"
+  ],
+  "author": "Jakaza",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
