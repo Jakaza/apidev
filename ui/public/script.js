@@ -56,8 +56,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     data.routes.forEach((route) => {
       const div = document.createElement("div");
-      div.className = "route-item";
-      div.innerText = `${route.method} ${route.path}`;
+
+      div.className = `route-item method-${route.method.toLowerCase()}`;
+      div.innerHTML = `
+        <span class="method-tag">${route.method}</span>
+        <span class="route-path">${route.path}</span>
+      `;
+
+
       div.onclick = () => {
         selectedRoute = route;
         methodInput.value = route.method;

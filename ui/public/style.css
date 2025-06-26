@@ -167,3 +167,44 @@ footer {
 #add-header-btn:hover {
     background: #059669;
 }
+
+
+.method-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    margin-right: 8px;
+    text-transform: uppercase;
+}
+
+.route-path {
+    font-family: monospace;
+}
+
+.route-item.method-get .method-tag {
+    background-color: #10b981;
+    /* Green */
+}
+
+.route-item.method-post .method-tag {
+    background-color: #3b82f6;
+    /* Blue */
+}
+
+.route-item.method-put .method-tag {
+    background-color: #f59e0b;
+    /* Orange */
+}
+
+.route-item.method-delete .method-tag {
+    background-color: #ef4444;
+    /* Red */
+}
+
+.route-item.method-patch .method-tag {
+    background-color: #8b5cf6;
+    /* Purple */
+}
