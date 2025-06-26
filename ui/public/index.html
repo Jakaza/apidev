@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Dev Tester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="logo">🧪 API Dev Tester</div>
+  </nav>
+
+  <main>
+    <section class="left">
+      <h2>Detected API Routes</h2>
+      <div id="routes-container" class="routes-list">Loading...</div>
+    </section>
+
+    <section class="right hidden" id="test-form-container">
+      <h2>Test Endpoint</h2>
+      <form id="test-form">
+        <label>
+          Method:
+          <input type="text" id="http-method" readonly />
+        </label>
+        <label>
+          URL:
+          <input type="text" id="route-url" readonly />
+        </label>
+        <label>
+          Params / Body (JSON):
+          <textarea id="request-body" placeholder='{"name": "test"}'></textarea>
+        </label>
+        <button type="submit">Send Request</button>
+      </form>
+      <pre id="response-box"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built with 💻 by Jakaza · v1.0.0</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
