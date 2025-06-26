@@ -114,3 +114,56 @@ footer {
     color: #888;
     margin-top: 2rem;
 }
+
+#headers-section {
+    margin-bottom: 1.5rem;
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+#headers-section h3 {
+    margin-top: 0;
+}
+
+.header-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-row input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.header-row button {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.header-row button:hover {
+    background: #dc2626;
+}
+
+#add-header-btn {
+    margin-top: 0.5rem;
+    background: #10b981;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#add-header-btn:hover {
+    background: #059669;
+}
