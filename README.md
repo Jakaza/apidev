@@ -11,7 +11,7 @@
 - ✅ In-browser UI to test GET, POST, PUT, DELETE, PATCH
 - ✅ Add custom headers and body inputs
 - ✅ Color-coded HTTP methods for quick visibility
-- ⚠️ Requires Python installed *(binaries coming soon)*
+- ✅ Uses python precompiled binaries to scan project (Work on Windows)
 
 ---
 
