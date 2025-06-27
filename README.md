@@ -15,6 +15,28 @@
 
 ---
 
+---
+
+## 🔮 Roadmap
+
+| Feature                                    | Status        |
+| ------------------------------------------ | ------------- |
+| Auto-detect routes using static scanner    | ✅ Completed   |
+| Simple in-browser testing UI               | ✅ Completed   |
+| Add body and headers to test requests      | ✅ Completed   |
+| Static route listing with HTTP method tags | ✅ Completed   |
+| Precompiled scanner binaries (Windows)     | 🔄 In Progress |
+| Full route (http://...) detection          | 🔄 In Progress |
+| Query/body/params detection                | 🔄 In Progress |
+| Precompiled scanner binaries (Linux)       | 🔜 Next        |
+| React/Vite-based advanced UI               | 🧭 Planned     |
+| cURL/Postman export                        | 🧭 Planned     |
+| Request history & environment variables    | 🧭 Planned     |
+
+---
+
+
+
 ## 📦 Installation
 
 ```bash
@@ -105,23 +127,6 @@ express-api-tester/
 - Node.js v14 or newer
 - Python 3.6+ *(temporarily required for scanning)*
 
----
-
-## 🔮 Roadmap
-
-| Feature                                          | Status        |
-| ------------------------------------------------ | ------------- |
-| Auto-detect routes using static scanner          | ✅ Completed   |
-| Simple in-browser testing UI                     | ✅ Completed   |
-| Add body and headers to test requests            | ✅ Completed   |
-| Static route listing with HTTP method tags       | ✅ Completed   |
-| Query/body/params detection                      | 🔄 In Progress |
-| Precompiled scanner binaries (Python not needed) | 🔜 Next        |
-| React/Vite-based advanced UI                     | 🧭 Planned     |
-| cURL/Postman export                              | 🧭 Planned     |
-| Request history & environment variables          | 🧭 Planned     |
-
----
 
 ## 📘 Example Output
 
