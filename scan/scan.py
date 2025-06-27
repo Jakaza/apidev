@@ -24,10 +24,8 @@ def main(project_path):
                         content = f.read()
                         file_routes = extract_routes(content, file_path)
 
-                        for route in file_routes:
-                            route_inputs = extract_expected_inputs(content) 
-                            route["expects"] = route_inputs
-
+                        # Extracted expected inputs for each route can be called here
+                        
                         print(f"Found {len(file_routes)} route(s) in {file_path}", file=sys.stderr)
 
                         routes.extend(file_routes)
