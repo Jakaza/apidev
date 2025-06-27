@@ -1,5 +1,5 @@
 {
-  "name": "api-dev",
+  "name": "express-apidev",
   "version": "0.1.0",
   "main": "index.js",
   "description": "API testing tool that auto-detect ExpressJS routes and allow developers to test the api easy",
@@ -16,7 +16,7 @@
     "middleware"
   ],
   "author": "Jakaza",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^5.1.0"
   },

@@ -1,7 +1,14 @@
 import os
 import sys
 import json
-from parser.route_extractor import extract_routes , extract_expected_inputs
+
+# Add current directory and parent to sys.path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, BASE_DIR)
+sys.path.insert(0, os.path.join(BASE_DIR, "parser"))
+
+from parser.route_extractor import extract_routes
+
 
 # scan/scan.py
 
