@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-from parser.route_extractor import extract_routes
+from parser.route_extractor import extract_routes , extract_expected_inputs
 
 # scan/scan.py
 
@@ -23,6 +23,10 @@ def main(project_path):
                     with open(file_path, "r", encoding="utf-8") as f:
                         content = f.read()
                         file_routes = extract_routes(content, file_path)
+
+                        for route in file_routes:
+                            route_inputs = extract_expected_inputs(content) 
+                            route["expects"] = route_inputs
 
                         print(f"Found {len(file_routes)} route(s) in {file_path}", file=sys.stderr)
 

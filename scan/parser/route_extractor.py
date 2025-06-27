@@ -1,6 +1,8 @@
 import re
 import sys
 
+# parser/route_extractor.py
+
 def extract_routes(js_code, file_path=None):
     routes = []
 
@@ -18,3 +20,16 @@ def extract_routes(js_code, file_path=None):
         })
 
     return routes
+
+"""""
+    The method extract_expected_inputs takes a JavaScript code block as input and returns a dictionary of expected inputs for each route.
+    E.G. 
+    {'req.body': ['title', 'description']}
+    {'req.params': ['id', 'title']}
+    {'req.query': ['page', 'limit']}
+
+    To be implemented
+"""""
+
+def extract_expected_inputs(js_code_block):
+    pass
