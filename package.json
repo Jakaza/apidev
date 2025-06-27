@@ -1,6 +1,6 @@
 {
   "name": "express-apidev",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "description": "API testing tool that auto-detect ExpressJS routes and allow developers to test the api easy",
   "scripts": {
