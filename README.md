@@ -25,10 +25,10 @@
 | Simple in-browser testing UI               | ✅ Completed   |
 | Add body and headers to test requests      | ✅ Completed   |
 | Static route listing with HTTP method tags | ✅ Completed   |
-| Precompiled scanner binaries (Windows)     | 🔄 In Progress |
+| Precompiled scanner binaries (Windows)     | ✅ Completed   |
 | Full route (http://...) detection          | 🔄 In Progress |
 | Query/body/params detection                | 🔄 In Progress |
-| Precompiled scanner binaries (Linux)       | 🔜 Next        |
+| Precompiled scanner binaries (Linux,Mac)   | 🔜 Next        |
 | React/Vite-based advanced UI               | 🧭 Planned     |
 | cURL/Postman export                        | 🧭 Planned     |
 | Request history & environment variables    | 🧭 Planned     |
