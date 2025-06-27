@@ -15,6 +15,13 @@
     "devtools",
     "middleware"
   ],
+  "files": [
+    "index.js",
+    "lib/",
+    "scan/dist/",
+    "ui/public/",
+    "routes/"
+  ],
   "author": "Jakaza",
   "license": "MIT",
   "dependencies": {
