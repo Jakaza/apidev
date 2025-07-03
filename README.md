@@ -95,11 +95,10 @@ express-api-tester/
 │   └── parser/                # Parsing logic for Express routes
 │       ├── route_extractor.py
 │       └── utils.py
-│
-├── bin/                       # (Planned) Python scanner compiled for each OS
+├── ├── bin/                   # (Planned) Python scanner compiled for each OS
 │   ├── scan-win.exe           # Windows (coming soon)
 │   ├── scan-mac               # macOS binary (coming soon)
-│   └── scan-linux             # Linux binary (coming soon)
+│   └── scan-linux 
 │
 ├── ui/                        # Web-based API Testing Interface
 │   ├── public/                # HTML/JS/CSS UI (current version)
@@ -107,9 +106,6 @@ express-api-tester/
 │
 ├── routes/                    # Internal Express routes for UI + data
 │   └── apitest.routes.js
-│
-├── docs/                      # API scan examples and documentation
-│   └── api-output-example.json
 │
 ├── examples/                  # Sample Express app to test apidev locally
 │   └── basic-app/
