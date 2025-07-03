@@ -13,6 +13,16 @@ sys.path.insert(0, os.path.join(BASE_DIR, "parser"))
 from parser.route_extractor import extract_routes
 
 
+def get_resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller"""
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+
 def is_valid_js_file(file_path: str) -> bool :
     """Check if file is a valid JavaScript file to scan."""
     valid_extensions = [".js"]

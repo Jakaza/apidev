@@ -4,4 +4,3 @@ scan/parser/
 scan/*.spec
 scan/__pycache__/
 docs/
-README.md

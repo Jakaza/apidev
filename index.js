@@ -12,9 +12,16 @@ function initApiTester(options = {}) {
 
     // ✅ Route to return scanned routes
     router.get('/__apitest/routes', async (req, res) => {
+        console.log("➡️  Incoming request to /__apitest/routes");
+        console.log("🔍 Project path:", projectPath);
+
         try {
             const routes = await runPythonScanner(projectPath);
-            res.json({ success: true, routes });
+
+            console.log("✅ Routes received from Python:");
+            console.log(routes);
+
+            res.json({ success: true, routes: routes.routes });
         } catch (error) {
             console.error("❌ Failed to run Python scanner:", error);
             res.status(500).json({ success: false, error: error.message });

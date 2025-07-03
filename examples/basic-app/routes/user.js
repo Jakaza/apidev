@@ -5,8 +5,10 @@ router.get('/', (req, res) => {
   res.send('Get all users');
 });
 
-router.get('/?role=:role&department=:department', (req, res) => {
-  res.send('Get Users with the same role and department');
+
+router.get('/', (req, res) => {
+  const { role, department } = req.query;
+  // use role and department...
 });
 
 
