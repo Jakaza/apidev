@@ -139,8 +139,15 @@ def extract_expected_inputs_for_route(js_code: str, method: str, path: str) -> D
         expected_inputs['req.headers'].extend(matches)
 
 
+    # Remove duplicates and clean up
+    for key in expected_inputs:
+        expected_inputs[key] = list(set(expected_inputs[key]))
+        expected_inputs[key] = [item.strip() for item in expected_inputs[key] if item.strip()]
 
+    # Remove empty categories
+    expected_inputs = {k: v for k, v in expected_inputs.items() if v}
     
+    return expected_inputs
 
 
 
