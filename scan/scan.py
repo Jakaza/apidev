@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import argparse
 from pathlib import Path
 from typing import List, Dict, Any
 
@@ -81,52 +82,69 @@ def scan_project(project_path: str, verbose: bool = False) -> List[Dict[str, Any
     return routes, {"scanned_files": scanned_files, "errors": errors}
 
 
+def output_results(routes: List[Dict[str, Any]], output_format: str = "json", 
+                  output_file: str = None, include_stats: bool = False, 
+                  stats: Dict[str, Any] = None):
+        """Output results in specified format"""
+        if output_format == "json":
+            result = {"routes": routes}
+            if include_stats and stats:
+                result["stats"] = stats
+            
+            output = json.dumps(result, indent=2, ensure_ascii=False)
 
-
-
-
-
-
-
-
-
-
-# scan/scan.py
-
-def main(project_path):
-    routes = []
-
-    print(f"Scanning project at: {project_path}", file=sys.stderr)
-
-    for root, dirs, files in os.walk(project_path):
-        # Ignore node_modules and other unwanted dirs
-        dirs[:] = [d for d in dirs if d not in ['node_modules', '__pycache__', '.git']]
-
-        for file in files:
-            if file.endswith(".js"):
-                file_path = os.path.join(root, file)
-                print(f"Reading file: {file_path}", file=sys.stderr)
-
+        if output_file:
                 try:
-                    with open(file_path, "r", encoding="utf-8") as f:
-                        content = f.read()
-                        file_routes = extract_routes(content, file_path)
-
-                        # Extracted expected inputs for each route can be called here
-                        
-                        print(f"Found {len(file_routes)} route(s) in {file_path}", file=sys.stderr)
-
-                        routes.extend(file_routes)
+                    with open(output_file, 'w', encoding='utf-8') as f:
+                        f.write(output)
+                    print(f"Results written to: {output_file}", file=sys.stderr)
                 except Exception as e:
-                    print(f"Error reading {file_path}: {str(e)}", file=sys.stderr)
+                    print(f"Error writing to file {output_file}: {e}", file=sys.stderr)
+                    print(output)
+        else:
+                print(output)
 
-    print(json.dumps(routes, indent=2))
+
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Scan JavaScript/TypeScript projects for API routes",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python scan.py /path/to/project
+  python scan.py /path/to/project --format table
+  python scan.py /path/to/project --output routes.json --stats
+  python scan.py /path/to/project --verbose --format summary
+        """
+    )
+    
+    parser.add_argument('project_path', help='Path to the project directory')
+    parser.add_argument('-v', '--verbose', action='store_true', 
+                       help='Enable verbose output')
+    parser.add_argument('-f', '--format', choices=['json', 'table', 'summary'], 
+                       default='json', help='Output format (default: json)')
+    parser.add_argument('-o', '--output', help='Output file (default: stdout)')
+    parser.add_argument('-s', '--stats', action='store_true', 
+                       help='Include scan statistics in output')
+    
+    args = parser.parse_args()
+    
+    try:
+        routes, stats = scan_project(args.project_path, args.verbose)
+        output_results(routes, args.format, args.output, args.stats, stats)
+        
+    except (FileNotFoundError, NotADirectoryError) as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+    except KeyboardInterrupt:
+        print("\nScan interrupted by user", file=sys.stderr)
+        sys.exit(1)
+    except Exception as e:
+        print(f"Unexpected error: {e}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python scan.py /path/to/project", file=sys.stderr)
-        sys.exit(1)
-
-    project_path = sys.argv[1]
-    main(project_path)
+    main()

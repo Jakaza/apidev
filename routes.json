@@ -1,0 +1,59 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cars",
+      "file": "api\\cars.js"
+    },
+    {
+      "method": "DELETE",
+      "path": "/cars/:id",
+      "file": "api\\cars.js"
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "file": "routes\\product.js"
+    },
+    {
+      "method": "DELETE",
+      "path": "/:id/:slug",
+      "file": "routes\\product.js"
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "file": "routes\\user.js"
+    },
+    {
+      "method": "GET",
+      "path": "/?role=:role&department=:department",
+      "file": "routes\\user.js"
+    },
+    {
+      "method": "POST",
+      "path": "/",
+      "file": "routes\\user.js"
+    },
+    {
+      "method": "PUT",
+      "path": "/:id/:surname/:chauke",
+      "file": "routes\\user.js"
+    },
+    {
+      "method": "GET",
+      "path": "/hiden/users",
+      "file": "routes\\hiden\\user.js"
+    },
+    {
+      "method": "POST",
+      "path": "/hiden/create-user",
+      "file": "routes\\hiden\\user.js"
+    },
+    {
+      "method": "PUT",
+      "path": "/hiden/:id",
+      "file": "routes\\hiden\\user.js"
+    }
+  ]
+}
