@@ -214,3 +214,66 @@ def extract_expected_inputs(js_code_block: str) -> Dict[str, List[str]]:
     return result
 
 
+
+def analyze_middleware(js_code: str) -> List[Dict[str, Any]]:
+    """Analyze middleware usage in the code"""
+    middleware = []
+    
+    middleware_patterns = [
+        r'app\.use\(\s*[\'"`]([^\'"`]*)[\'"`]\s*,\s*(\w+)',  # app.use('/path', middleware)
+        r'router\.use\(\s*[\'"`]([^\'"`]*)[\'"`]\s*,\s*(\w+)',  # router.use('/path', middleware)
+        r'app\.use\(\s*(\w+)\s*\)',  # app.use(middleware)
+        r'\.use\(\s*(\w+)\s*\)'  # .use(middleware)
+    ]
+    
+    for pattern in middleware_patterns:
+        matches = re.findall(pattern, js_code, re.IGNORECASE)
+        for match in matches:
+            if isinstance(match, tuple) and len(match) == 2:
+                path, name = match
+                middleware.append({"path": path, "name": name})
+            else:
+                middleware.append({"path": "*", "name": match})
+    
+    return middleware
+
+def get_route_statistics(routes: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Generate statistics about the extracted routes"""
+    if not routes:
+        return {}
+    
+    stats = {
+        'total_routes': len(routes),
+        'methods': {},
+        'frameworks': {},
+        'files_with_routes': set(),
+        'routes_with_params': 0,
+        'routes_with_body_inputs': 0,
+        'routes_with_query_inputs': 0
+    }
+    
+    for route in routes:
+        # Count methods
+        method = route.get('method', 'UNKNOWN')
+        stats['methods'][method] = stats['methods'].get(method, 0) + 1
+        
+        # Count frameworks
+        framework = route.get('framework', 'unknown')
+        stats['frameworks'][framework] = stats['frameworks'].get(framework, 0) + 1
+        
+        # Track files
+        if route.get('file'):
+            stats['files_with_routes'].add(route['file'])
+        
+        # Analyze expected inputs
+        expected_inputs = route.get('expected_inputs', {})
+        if expected_inputs.get('req.params'):
+            stats['routes_with_params'] += 1
+        if expected_inputs.get('req.body'):
+            stats['routes_with_body_inputs'] += 1
+        if expected_inputs.get('req.query'):
+            stats['routes_with_query_inputs'] += 1
+    
+    stats['files_with_routes'] = len(stats['files_with_routes'])
+    
+    return stats
