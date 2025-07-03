@@ -10,6 +10,23 @@ sys.path.insert(0, os.path.join(BASE_DIR, "parser"))
 from parser.route_extractor import extract_routes
 
 
+def is_valid_js_file(file_path: str) -> bool :
+    """Check if file is a valid JavaScript file to scan."""
+    valid_extensions = [".js"]
+    return any(file_path.endswith(ext) for ext in valid_extensions)
+
+
+def should_ignore_directory(dir_name: str) -> bool:
+    """Check if directory should be ignored."""
+    ignore_dirs = {
+        'node_modules', '__pycache__', '.git', '.next', 'dist', 
+        'build', 'coverage', '.nyc_output', 'logs', 'tmp', 'temp'
+    }
+    return dir_name in ignore_dirs or dir_name.startswith('.')
+
+
+
+
 # scan/scan.py
 
 def main(project_path):
