@@ -25,7 +25,7 @@ Undervelopment - working features are below
 ## 📦 Installation
 
 ```bash
-npm install apidev
+npm install express-apidev
 ```
 
 ---
@@ -36,7 +36,7 @@ npm install apidev
 
 ```js
 const express = require("express");
-const initApiTester = require("apidev");
+const initApiTester = require("express-apidev");
 
 const app = express();
 app.use(express.json());
