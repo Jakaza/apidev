@@ -1,4 +1,4 @@
-# 🧪 apidev — Express API Testing Middleware with Built-in UI
+## Express API Testing Middleware with Built-in UI
 
 **apidev** is a Postman-style API testing system that integrates directly into your Express application. It auto-detects all your routes using a Python-based scanner and provides a beautiful in-browser UI to test them — no extra config or external tools required.
 
