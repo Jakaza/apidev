@@ -150,34 +150,67 @@ def extract_expected_inputs_for_route(js_code: str, method: str, path: str) -> D
     return expected_inputs
 
 
+def extract_expected_inputs(js_code_block: str) -> Dict[str, List[str]]:
+    """
+    Extract expected inputs from a JavaScript code block.
+    This is a more general version that doesn't target specific routes.
+    
+    Returns:
+        Dictionary with expected inputs categorized by source:
+        {'req.body': ['title', 'description'], 'req.params': ['id'], etc.}
+    """
+    expected_inputs = {
+        'req.body': set(),
+        'req.params': set(),
+        'req.query': set(),
+        'req.headers': set()
+    }
+    
+    # Patterns for different input sources
+    patterns = {
+        'req.body': [
+            r'req\.body\.(\w+)',
+            r'request\.body\.(\w+)',
+            r'ctx\.request\.body\.(\w+)',
+            r'const\s*{\s*([^}]+)\s*}\s*=\s*req\.body',
+            r'const\s*{\s*([^}]+)\s*}\s*=\s*request\.body'
+        ],
+        'req.params': [
+            r'req\.params\.(\w+)',
+            r'request\.params\.(\w+)',
+            r'ctx\.params\.(\w+)',
+            r':(\w+)(?=\s*[,\)])'  # Route parameters like :id
+        ],
+        'req.query': [
+            r'req\.query\.(\w+)',
+            r'request\.query\.(\w+)',
+            r'ctx\.query\.(\w+)'
+        ],
+        'req.headers': [
+            r'req\.headers\.(\w+)',
+            r'req\.headers\[[\'"`]([^\'"`]+)[\'"`]\]',
+            r'request\.headers\.(\w+)'
+        ]
+    }
+    
+    for input_type, pattern_list in patterns.items():
+        for pattern in pattern_list:
+            matches = re.findall(pattern, js_code_block, re.IGNORECASE)
+            for match in matches:
+                if ',' in str(match):
+                    # Handle destructuring: {title, description}
+                    fields = [field.strip() for field in str(match).replace('{', '').replace('}', '').split(',')]
+                    expected_inputs[input_type].update(fields)
+                else:
+                    expected_inputs[input_type].add(str(match).strip())
+    
+    # Convert sets to sorted lists and filter empty values
+    result = {}
+    for key, values in expected_inputs.items():
+        cleaned_values = [v for v in values if v and not v.isspace()]
+        if cleaned_values:
+            result[key] = sorted(list(set(cleaned_values)))
+    
+    return result
 
-# def extract_routes(js_code, file_path=None):
-#     routes = []
 
-#     pattern = re.compile(r'\b(app|router)\.(get|post|put|delete|patch)\s*\(\s*[\'"](.+?)[\'"]', re.IGNORECASE)
-
-#     matches = pattern.findall(js_code)
-#     print(f"[{file_path}] Matched {len(matches)} route expressions", file=sys.stderr)
-
-#     for obj , method, path in matches:
-#         print(f" Jakaza - >{method.upper()} {path} ({obj})", file=sys.stderr)
-#         routes.append({
-#             "method": method.upper(),
-#             "path": path,
-#             "file": file_path
-#         })
-
-#     return routes
-
-"""""
-    The method extract_expected_inputs takes a JavaScript code block as input and returns a dictionary of expected inputs for each route.
-    E.G. 
-    {'req.body': ['title', 'description']}
-    {'req.params': ['id', 'title']}
-    {'req.query': ['page', 'limit']}
-
-    To be implemented
-"""""
-
-def extract_expected_inputs(js_code_block):
-    pass
