@@ -2,6 +2,8 @@
 
 **apidev** is a Postman-style API testing system that integrates directly into your Express application. It auto-detects all your routes using a Python-based scanner and provides a beautiful in-browser UI to test them — no extra config or external tools required.
 
+Undervelopment - working features are below
+
 ---
 
 ## ✨ Features
@@ -15,24 +17,6 @@
 
 ---
 
----
-
-## 🔮 Roadmap
-
-| Feature                                    | Status        |
-| ------------------------------------------ | ------------- |
-| Auto-detect routes using static scanner    | ✅ Completed   |
-| Simple in-browser testing UI               | ✅ Completed   |
-| Add body and headers to test requests      | ✅ Completed   |
-| Static route listing with HTTP method tags | ✅ Completed   |
-| Precompiled scanner binaries (Windows)     | ✅ Completed   |
-| Better Pattern Matching                    | 🔄 In Progress |
-| Full route (http://...) detection          | 🔄 In Progress |
-| Query/body/params detection                | 🔄 In Progress |
-| Precompiled scanner binaries (Linux,Mac)   | 🔜 Next        |
-| React/Vite-based advanced UI               | 🧭 Planned     |
-| cURL/Postman export                        | 🧭 Planned     |
-| Request history & environment variables    | 🧭 Planned     |
 
 ---
 
@@ -72,6 +56,28 @@ Visit [URL/__apitest](URL/__apitest)
 You’ll see all your detected routes — test them directly.
 
 ---
+
+
+
+---
+
+## 🔮 Roadmap
+
+| Feature                                    | Status        |
+| ------------------------------------------ | ------------- |
+| Auto-detect routes using static scanner    | ✅ Completed   |
+| Simple in-browser testing UI               | ✅ Completed   |
+| Add body and headers to test requests      | ✅ Completed   |
+| Static route listing with HTTP method tags | ✅ Completed   |
+| Precompiled scanner binaries (Windows)     | ✅ Completed   |
+| Better Pattern Matching                    | 🔄 In Progress |
+| Full route (http://...) detection          | 🔄 In Progress |
+| Query/body/params detection                | 🔄 In Progress |
+| Precompiled scanner binaries (Linux,Mac)   | 🔜 Next        |
+| React/Vite-based advanced UI               | 🧭 Planned     |
+| cURL/Postman export                        | 🧭 Planned     |
+| Request history & environment variables    | 🧭 Planned     |
+
 
 ## 📁 Project Structure (Overview)
 
