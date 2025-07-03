@@ -180,26 +180,16 @@ We welcome contributors who want to improve or extend **apidev**. This project i
 - Improve the Python scanner to better detect:
   - `req.params`, `req.query`, and `req.body`
   - Imported route handlers (`router.get('/', handler)`)
-- Add binary support (`bin/scan-win.exe`, etc.) so Python is optional
+- Add binary support (`for Linux and Mac`, etc.) For Windows it's compatabile
 - Enhance the UI with:
+  - Detected body inputs 
   - Authorization header helpers
   - Response formatting and collapsible sections
   - Export to cURL/Postman
 - Help design the future `React/Vite` version in `ui/app/`
 
 ### ⚙ Development Guidelines
-
-- Test changes using the demo app:
-  ```bash
-  node examples/basic-app/app.js
-  ```
-- Python debug output:
-  ```python
-  print("Debug message", file=sys.stderr)
-  ```
-- JavaScript debug output:
-  ```js
-  console.log("Debug message")
+  - Fork the project
   ```
 
 ### 🔒 What Not to Add (Yet)
