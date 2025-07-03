@@ -104,9 +104,6 @@ def output_results(routes: List[Dict[str, Any]], output_format: str = "json",
         else:
                 print(output)
 
-
-
-
 def main():
     parser = argparse.ArgumentParser(
         description="Scan JavaScript/TypeScript projects for API routes",
