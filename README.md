@@ -26,6 +26,7 @@
 | Add body and headers to test requests      | ✅ Completed   |
 | Static route listing with HTTP method tags | ✅ Completed   |
 | Precompiled scanner binaries (Windows)     | ✅ Completed   |
+| Better Pattern Matching                    | 🔄 In Progress |
 | Full route (http://...) detection          | 🔄 In Progress |
 | Query/body/params detection                | 🔄 In Progress |
 | Precompiled scanner binaries (Linux,Mac)   | 🔜 Next        |
@@ -67,7 +68,7 @@ app.listen(3000, () => console.log("Running on http://localhost:3000"));
 
 ### 2. Open the Test UI
 
-Visit [http://localhost:3000/__apitest](http://localhost:3000/__apitest)  
+Visit [URL/__apitest](URL/__apitest)  
 You’ll see all your detected routes — test them directly.
 
 ---
